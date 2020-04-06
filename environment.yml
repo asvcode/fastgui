@@ -3,7 +3,7 @@ channels:
 - pytorch
 - defaults
 dependencies:
-- fastai2==0.0.15
+- fastai2
 - jupyter
 - pytorch>=1.3.0
 - torchvision>=0.5
