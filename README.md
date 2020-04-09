@@ -5,5 +5,5 @@
  
 - Under the 'Info' tab you can now easily upload some common datasets: Cats&Dogs, Imagenette, Imagewoof, Cifar and Mnist
 <p align="left">
-  <img width="500" height="225" src="static/fastgui4_sm.png">
+  <img width="500" height="329" src="static/fastgui4_sm.png">
 </p>
