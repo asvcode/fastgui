@@ -407,6 +407,19 @@ def aug_dash():
     display(qq)
     aug_img()
 
+def show_imagee(im, **kwargs):
+    "Show_image helper for viewing images in Voila"
+    # Handle pytorch axis order
+    if hasattrs(im, ('data','cpu','permute')):
+        im = im.data.cpu()
+        if im.shape[0]<5: im=im.permute(1,2,0)
+    elif not isinstance(im,np.ndarray): im=array(im)
+    # Handle 1-channel images
+    if im.shape[-1]==1: im=im[...,0]
+    it = Tensor(im)
+    img = Image.fromarray(im, 'RGB')
+    display(img)
+
 def aug_img():
     aug_img_b = widgets.Button(description='Confirm', button_style='success')
     display(aug_img_b)
@@ -428,7 +441,7 @@ def aug_img():
             if aug_dash.pad.value == 'Border': pad = PadMode.Border
             if aug_dash.pad.value == 'Reflection': pad = PadMode.Reflection
             rsz = Resize(int(aug_dash.res.value), method=method, pad_mode=pad)
-            display(show_image(rsz(pil_img)))
+            display(show_imagee(rsz(pil_img)))
     aug_img_b.on_click(aug_img_)
 
 def display_ui():
